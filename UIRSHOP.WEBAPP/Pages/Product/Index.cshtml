@@ -1,0 +1,49 @@
+﻿@page "{id:int}"
+
+@model UIRSHOP.WEBAPP.Pages.Product.IndexModel
+@{
+}
+
+    <div class="container w-25 mt-5">
+    <div class="card" style="margin-top:150px">
+        <img src="~/images/products/@Model.product.ImagePath" class="card-img-top" alt="Image du Produit" style="height:300px">
+            <div class="card-body">
+            <h5 class="card-title">@Model.product.Name</h5>
+            <p class="card-text">@Model.product.Description</p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">@Model.product.Price DH</li>
+                
+            </ul>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Supplier</h6>
+                @foreach (var item2 in Model.Suppliers)
+                {
+                @if (@Model.product.SupplierId == item2.Id)
+                {
+                <div class="d-flex align-items-center">
+                    <img src=@item2.ImagePath class="rounded-circle mr-3" alt="Image du Fournisseur" style="width:150px;height:150px">
+                    <div>
+                        <p class="card-text">@item2.Name</p>
+                        <p class="card-text">contact:</p>
+                            <a href="" class=" me-1">
+                                <i class="fa fa-facebook-f"></i>
+                            </a>
+                        <a class="mr-5" href="@item2.FacebookUrl">Facebook</a>
+                            <a href="" class=" me-1">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                                <a href="@item2.InstagramUrl" class="">Instegram</a>
+                    </div>
+                </div>}}
+                <div>
+                <a href="#" class="btn btn-primary w-50 mt-2">Add To Chart</a><br />
+                <a href="#" class="btn btn-danger w-50 mt-2">Buy</a><br />
+                <a asp-page="/Index" class="btn btn-dark w-50 mt-2">Back</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+}

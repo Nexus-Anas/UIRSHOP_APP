@@ -1,0 +1,123 @@
+﻿@page
+@model UIRSHOP.WEB.BO.Pages.Suppliers.DetailsModel
+@{
+    ViewData["Title"] = "Supplier Details";
+}
+
+
+<div class="container">
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <h2>Supplier Details</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="h6 card-description text-primary ml-1">
+                        <img src="~/images/suppliers/@Model.SupplierDto.ImagePath" alt="@Model.SupplierDto.Name" class="rounded" width="150" height="150">
+                    </p>
+                    <form method="post" class="forms-sample" enctype="multipart/form-data">
+                        <input asp-for="SupplierDto.Id" type="hidden" />
+                        <div class="form-group row">
+                            <span asp-validation-for="SupplierDto.Name" class="text text-danger"></span>
+                            <label asp-for="SupplierDto.Name" class="col-2 col-form-label">Name</label>
+                            <div class="col-10">
+                                <input asp-for="SupplierDto.Name" type="text" class="form-control" placeholder="enter supplier name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Image</label>
+                            <input type="file" name="files" id="fileInput" class="file-upload-default" accept=".jpg, .jpeg, .png, .ico, .svg, .webp" style="display: none;">
+                            <div class="col-10">
+                                <div class="input-group">
+                                    <input type="text" id="imageFileName" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button" onclick="chooseFile()">Upload</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span asp-validation-for="SupplierDto.Type" class="text text-danger"></span>
+                            <label asp-for="SupplierDto.Type" class="col-2">Type</label>
+                            <div class="col-10">
+                                <select asp-for="SupplierDto.Type" class="form-control text-dark">
+                                    <option>Student</option>
+                                    <option>Club</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span asp-validation-for="SupplierDto.FacebookUrl" class="text text-danger"></span>
+                            <label asp-for="SupplierDto.FacebookUrl" class="col-2 col-form-label">Facebook URL</label>
+                            <div class="col-10">
+                                <input asp-for="SupplierDto.FacebookUrl" type="text" class="form-control" placeholder="type facebook url">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span asp-validation-for="SupplierDto.TwitterUrl" class="text text-danger"></span>
+                            <label asp-for="SupplierDto.TwitterUrl" class="col-2 col-form-label">Twitter URL</label>
+                            <div class="col-10">
+                                <input asp-for="SupplierDto.TwitterUrl" type="text" class="form-control" placeholder="type twitter url">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span asp-validation-for="SupplierDto.InstagramUrl" class="text text-danger"></span>
+                            <label asp-for="SupplierDto.InstagramUrl" class="col-2 col-form-label">Instagram URL</label>
+                            <div class="col-10">
+                                <input asp-for="SupplierDto.InstagramUrl" type="text" class="form-control" placeholder="type instagram url">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span asp-validation-for="SupplierDto.TwitterUrl" class="text text-danger"></span>
+                            <label asp-for="SupplierDto.TikTokUrl" class="col-2 col-form-label">Tiktok URL</label>
+                            <div class="col-10">
+                                <input asp-for="SupplierDto.TikTokUrl" type="text" class="form-control" placeholder="type tiktok url">
+                            </div>
+                        </div>
+
+                        <button asp-page-handler="Update" class="btn btn-info mr-2">Update</button>
+                        <button asp-page-handler="Delete" class="btn btn-danger mr-2">Delete</button>
+                        <a asp-page="/Suppliers/Index" class="btn btn-secondary">Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+@section DocUploadJS {
+    <script>
+        function chooseFile() {
+            var fileInput = $('#fileInput');
+            fileInput.click();
+
+            fileInput.change(function () {
+                var fileName = fileInput.val().split('\\').pop();
+                $('#imageFileName').val(fileName);
+            });
+        }
+    </script>
+}

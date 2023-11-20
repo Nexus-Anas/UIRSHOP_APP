@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="row">
+    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+        <h3 class="font-weight-bold">Welcome User</h3>
+        <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
+    </div>
+</div>
+
+
+
+<div class="row mt-5">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card tale-bg">
+            <div class="card-people mt-auto">
+                <img src="images/uirpanel.png" alt="people">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+            <div class="col-md-6 mb-4 stretch-card transparent">
+                <div class="card card-tale">
+                    <div class="card-body">
+                        <h4 class="mb-4">Total Products</h4>
+                        <p class="fs-30 mb-2">@Model.ProductCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4 stretch-card transparent">
+                <div class="card card-dark-blue">
+                    <div class="card-body">
+                        <h4 class="mb-4">Number of Suppliers</h4>
+                        <p class="fs-30 mb-2">@Model.SupplierCount</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                <div class="card card-light-blue">
+                    <div class="card-body">
+                        <h4 class="mb-4">Orders</h4>
+                        <p class="fs-30 mb-2">1</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 stretch-card transparent">
+                <div class="card card-light-danger">
+                    <div class="card-body">
+                        <h4 class="mb-4">Number of Clients</h4>
+                        <p class="fs-30 mb-2">1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

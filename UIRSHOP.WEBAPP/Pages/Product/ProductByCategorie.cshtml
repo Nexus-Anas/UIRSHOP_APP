@@ -1,0 +1,39 @@
+﻿@page
+@model UIRSHOP.WEBAPP.Pages.Product.ProductByCategorieModel
+@{
+	var idcategory=0;
+}
+
+
+<div class="row container" style="margin-top:100px">
+	<div class="col">
+
+		<div class="row">
+			<a asp-page="/Index" class="btn btn-secondary col-2 mt-3 ml-2">Back</a>
+		</div>
+		<div class="product-grid d-flex align-content-start flex-wrap" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+			
+			<!-- Product 1 -->
+			@foreach (var item in Model.products)
+			{
+				if (item.CategoryId == Model.idCategory)
+				{
+					<div class="product-item men">
+						<div class="product discount product_filter">
+						<div class="product_image">
+								<img src="~/images/products/@item.ImagePath" alt="" style="height:200px">
+						</div>
+						<div class="favorite favorite_left"></div>
+						<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+						<div class="product_info">
+							<h6 class="product_name"><a asp-page="/Product/Index" asp-route-id="@item.Id">@item.Name</a></h6>
+							<div class="product_price">@item.Price<span>$590.00</span></div>
+						</div>
+					</div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+				</div>}
+			}
+
+		</div>
+	</div>
+</div>

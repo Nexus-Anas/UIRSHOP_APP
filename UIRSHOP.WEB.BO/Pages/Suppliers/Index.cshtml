@@ -1,0 +1,57 @@
+﻿@page
+@model UIRSHOP.WEB.BO.Pages.Suppliers.IndexModel
+@{
+    ViewData["Title"] = "Manage Suppliers";
+}
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <h2>Suppliers</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="h4">
+                                    <th><span class="h4">Name</span></th>
+                                    <th><span class="h4">Type</span></th>
+                                    <th><span class="h4"><i class="bi bi-facebook"></i> Facebook</span></th>
+                                    <th><span class="h4"><i class="bi bi-twitter-x"></i> Twitter X</span></th>
+                                    <th><span class="h4"><i class="bi bi-instagram"></i> Instagram</span></th>
+                                    <th><span class="h4"><i class="bi bi-tiktok"></i> Tiktok</span></th>
+                                    <th class="text-center"><span class="h4">Action</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.SupplierDtos)
+                                {
+                                    string badge = item.Type == "Student" ? "badge-dark" : "badge-warning";
+                                    <tr>
+                                        <td><span class="h4">@item.Name</span></td>
+                                        <td><label class="badge @badge"><span class="h5">@item.Type</span></label></td>
+                                        <td><span class="h4">@item.FacebookUrl</span></td>
+                                        <td><span class="h4">@item.TwitterUrl</span></td>
+                                        <td><span class="h4">@item.InstagramUrl</span></td>
+                                        <td><span class="h4">@item.TikTokUrl</span></td>
+                                        <td class="text-center"><a asp-route-id="@item.Id" asp-page="/Suppliers/Details" class="btn btn-info"><span class="h5">Manage</span></a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

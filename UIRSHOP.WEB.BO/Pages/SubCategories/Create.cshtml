@@ -1,0 +1,63 @@
+﻿@page
+@model UIRSHOP.WEB.BO.Pages.SubCategories.CreateModel
+@{
+    ViewData["Title"] = "New Sub-Categories";
+}
+
+
+<div class="container">
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <h2>New Sub-Categories</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="card-description text-info">
+                        Fill the following fields
+                    </p>
+                    <form method="post" class="forms-sample">
+
+                        <div class="form-group row">
+                            <span asp-validation-for="SubCategoryDto.Name" class="text text-danger"></span>
+                            <label asp-for="SubCategoryDto.Name" class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input asp-for="SubCategoryDto.Name" type="text" class="form-control" placeholder="enter category's name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="SubCategoryDto.Description" class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea asp-for="SubCategoryDto.Description" class="form-control" rows="6" placeholder="type description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="SubCategoryDto.CategoryId" class="col-sm-3 col-form-label">Category</label>
+                            <div class="col-sm-9">
+                                <select asp-for="SubCategoryDto.CategoryId" class="form-control form-select required">
+                                    <option value="">Choisir...</option>
+                                    @foreach (var item in Model.CategoryDtos)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <button asp-page-handler="Create" class="btn btn-primary mr-2">Add</button>
+                        <button type="reset" class="btn btn-light">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

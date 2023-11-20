@@ -1,0 +1,52 @@
+﻿@page
+@model UIRSHOP.WEB.BO.Pages.Categories.IndexModel
+@{
+    ViewData["Title"] = "Manage Categories";
+}
+
+
+<div class="container">
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <h2>Categories</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><span class="h4">Name</span></th>
+                                    <th><span class="h4">Description</span></th>
+                                    <th><span class="h4">Creation Date</span></th>
+                                    <th><span class="h4">Update date</span></th>
+                                    <th class="text-center"><span class="h4">Action</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.CategoryDtos)
+                                {
+                                    <tr>
+                                        <td><span class="h4">@item.Name</span></td>
+                                        <td><span class="h4">@item.Description</span></td>
+                                        <td><span class="h4">@item.CreatedDate</span></td>
+                                        <td><span class="h4">@item.UpdatedDate</span></td>
+                                        <td class="text-center"><a asp-route-id="@item.Id" asp-page="/Categories/Details" class="btn btn-info"><span class="h5">Manage</span></a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

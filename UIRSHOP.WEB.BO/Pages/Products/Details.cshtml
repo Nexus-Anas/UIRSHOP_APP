@@ -1,0 +1,181 @@
+﻿@page
+@model UIRSHOP.WEB.BO.Pages.Products.DetailsModel
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+
+<div class="container">
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <h2>Product Details</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <div class="form-group row">
+                        <h4 class="col-xl-2 xol-lg-2 col-12 col-form-label mt-2">Add Quantity</h4>
+                        <div class="col-xl-8 xol-lg-8 col-12 mt-2">
+                            <input type="text" class="form-control" placeholder="edit product name" value="HoodieBL">
+                        </div>
+                        <div class="col-xl-2 xol-lg-2 col-12 mt-2">
+                            <button asp-page-handler="AddQuantity" class="btn btn-info"><span class="font-weight-bold"><i class="bi bi-plus-lg"></i> Add</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="h6 card-description text-primary ml-1">
+                        <img src="~/images/products/@Model.ProductDto.ImagePath" alt="@Model.ProductDto.Name" class="rounded" width="150" height="150">
+                    </p>
+                    <form method="post" class="forms-sample" enctype="multipart/form-data">
+                        <input asp-for="ProductDto.Id" type="hidden" />
+                        <div class="form-group row">
+                            <label asp-for="ProductDto.Name" class="col-2 col-form-label">Name</label>
+                            <div class="col-10">
+                                <input asp-for="ProductDto.Name" type="text" class="form-control" placeholder="enter product name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="ProductDto.CategoryId" class="col-2">Category</label>
+                            <div class="col-10">
+                                <select asp-for="ProductDto.CategoryId" class="form-control text-dark">
+                                    @foreach (var item in Model.CategoryDtos)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="ProductDto.Price" class="col-2 col-form-label">Price</label>
+                            <div class="col-10">
+                                <input asp-for="ProductDto.Price" type="text" class="form-control" placeholder="enter product price (DH)">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="ProductDto.Size" class="col-2">Size</label>
+                            <div class="col-10">
+                                <select asp-for="ProductDto.Size" class="form-control text-dark">
+                                    <option>Select Size...</option>
+                                    <option>S</option>
+                                    <option>M</option>
+                                    <option>L</option>
+                                    <option>XL</option>
+                                    <option>XXL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="ProductDto.Color" class="col-2">Color</label>
+                            <div class="col-10">
+                                <select asp-for="ProductDto.Color" class="form-control text-dark">
+                                    <option>Select Color...</option>
+                                    <option style="color: red;">Red</option>
+                                    <option style="color: green;background-color:whitesmoke">Green</option>
+                                    <option style="color: blue;">Blue</option>
+                                    <option style="color: yellow;background-color:whitesmoke">Yellow</option>
+                                    <option style="color: purple;">Purple</option>
+                                    <option style="color: orange;background-color:whitesmoke">Orange</option>
+                                    <option style="color: brown;">Brown</option>
+                                    <option style="color: pink;background-color:whitesmoke">Pink</option>
+                                    <option style="color: teal;">Teal</option>
+                                    <option style="color: maroon;background-color:whitesmoke">Maroon</option>
+                                    <option style="color: navy;">Navy</option>
+                                    <option style="color: olive;background-color:whitesmoke">Olive</option>
+                                    <option style="color: indigo;">Indigo</option>
+                                    <option style="color: cyan;background-color:whitesmoke">Cyan</option>
+                                    <option style="color: magenta;">Magenta</option>
+                                    <option style="color: lime;background-color:whitesmoke">Lime</option>
+                                    <option style="color: silver;">Silver</option>
+                                    <option style="color: gold;background-color:whitesmoke">Gold</option>
+                                    <option style="color: salmon;">Salmon</option>
+                                    <option style="color: turquoise;background-color:whitesmoke">Turquoise</option>
+                                    <option style="color: crimson;">Crimson</option>
+                                    <option style="color: dodgerblue;background-color:whitesmoke">Dodger Blue</option>
+                                    <!-- Add more colors as needed -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="ProductDto.SupplierId" class="col-2">Supplier</label>
+                            <div class="col-10">
+                                <select asp-for="ProductDto.SupplierId" class="form-control text-dark">
+                                    @foreach (var item in Model.SupplierDtos)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Image</label>
+                            <input type="file" name="files" id="fileInput" class="file-upload-default" accept=".jpg, .jpeg, .png, .ico, .svg, .webp" style="display: none;">
+                            <div class="col-10">
+                                <div class="input-group">
+                                    <input type="text" id="imageFileName" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button" onclick="chooseFile()">Upload</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="ProductDto.Description" class="col-2 col-form-label">Description</label>
+                            <div class="col-10">
+                                <textarea asp-for="ProductDto.Description" class="form-control" rows="6" placeholder="enter product description"></textarea>
+                            </div>
+                        </div>
+
+                        <button asp-page-handler="Update" class="btn btn-info mr-2">Update</button>
+                        <button asp-page-handler="Delete" class="btn btn-danger mr-2">Delete</button>
+                        <a asp-page="/Products/Index" class="btn btn-secondary">Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+@section DocUploadJS {
+    <script>
+        function chooseFile() {
+            var fileInput = $('#fileInput');
+            fileInput.click();
+
+            fileInput.change(function () {
+                var fileName = fileInput.val().split('\\').pop();
+                $('#imageFileName').val(fileName);
+            });
+        }
+    </script>
+}

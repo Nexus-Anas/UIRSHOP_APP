@@ -1,0 +1,117 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div id="carouselExampleControls" class="carousel container slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img class="d-block w-100" src="/images//clothes1.jpg" style="height:600px" alt="First slide">
+		</div>
+		<div class="carousel-item">
+			<img class="d-block w-100" src="/images//clothes2.jpg" style="height:600px" alt="Third slide">
+		</div>
+	</div>
+	<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
+
+ 
+
+
+
+<div class="banner">
+	<div class="container">
+		<div class="row">
+			 
+			<div class="col-md-4">
+				<div class="banner_item align-items-center" style="background-image:url(https://th.bing.com/th/id/R.1634a2f1a94c6f92eef6689d8b7da121?rik=kyvMo%2bc8g0hXlQ&riu=http%3a%2f%2fwww.yiwu.ltd%2fwp-content%2fuploads%2f2020%2f02%2fappareltextiles.jpg&ehk=mrlxYyfXoWQE78n%2fdCfIsYfnyUVnlF0HmGTmbyRNDbM%3d&risl=&pid=ImgRaw&r=0)">
+					<div class="banner_category">
+						<a href="javascript:void(0);" onclick="redirectToPage('Clothing')">Clothing</a>
+					</div>
+				</div>
+			</div>
+								
+			<div class="col-md-4">
+				<div class="banner_item align-items-center" style="background-image:url(https://th.bing.com/th/id/OIP.sqepIZtyyoh3Wm1oVsRR_wHaE3?rs=1&pid=ImgDetMain)">
+					<div class="banner_category">
+						<a href="javascript:void(0);" onclick="redirectToPage('Accessories')">Accessories</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="banner_item align-items-center" style="background-image:url(https://i.pinimg.com/736x/b8/73/95/b873957c1d1ffd9f379ebba96e69eb46.jpg)">
+					<div class="banner_category">
+						<a href="javascript:void(0);" onclick="redirectToPage('High Tesh')">High Tesh</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="new_arrivals">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_title new_arrivals_title">
+						<h2>New Arrivals</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col text-center">
+					<div class="new_arrivals_sorting">
+						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
+							
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
+						 @foreach (var item in Model.categories)
+						 {
+							<li class="mx-2 mb-2 grid_sorting_button button d-flex flex-column justify-content-center align-items-center dropdown" data-filter="">
+								<a class="text-dark" href="javascript:void(0);" onclick="redirectToPage('@item.Name')" >
+									@item.Name
+								</a>
+							
+							</li>
+							
+						 }
+						 </ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+				<div class="product-grid d-flex align-content-start flex-wrap" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+
+						<!-- Product 1 -->
+						    @foreach (var item in Model.products)
+                                {
+						<div class="product-item men">
+							<div class="product discount product_filter">
+								<div class="product_image">
+									<img src="~/images/products/@item.ImagePath" alt="" style="height:200px">
+								</div>
+								<div class="favorite favorite_left"></div>
+								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>New</span></div>
+								<div class="product_info">
+									<h6 class="product_name"><a asp-page="/Product/Index" asp-route-id="@item.Id">@item.Name</a></h6>
+									<div class="product_price">@item.Price DH<span></span></div>
+								</div>
+							</div>
+							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+						</div>
+						}
+					
+					</div>
+				</div>
+			</div>
+	</div>   
+	</div>

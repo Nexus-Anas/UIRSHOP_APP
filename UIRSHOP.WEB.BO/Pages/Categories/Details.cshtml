@@ -1,0 +1,68 @@
+﻿@page
+@model UIRSHOP.WEB.BO.Pages.Categories.DetailsModel
+@{
+    ViewData["Title"] = "Category Details";
+}
+
+
+<div class="container">
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <h2>Category Details</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="h6 card-description text-primary">
+                        Edit category details
+                    </p>
+                    <form method="post" class="forms-sample">
+
+                        <div class="form-group row">
+                            <span asp-validation-for="CategoryDto.Name" class="text text-danger"></span>
+                            <label asp-for="CategoryDto.Name" class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input asp-for="CategoryDto.Name" type="text" class="form-control" placeholder="enter category's name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span asp-validation-for="CategoryDto.Description" class="text text-danger"></span>
+                            <label asp-for="CategoryDto.Description" class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea asp-for="CategoryDto.Description" class="form-control" rows="6" placeholder="type description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="CategoryDto.CreatedDate" class="col-sm-3 col-form-label">Creation Date</label>
+                            <div class="col-sm-9">
+                                <input asp-for="CategoryDto.CreatedDate" type="datetime" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="CategoryDto.UpdatedDate" class="col-sm-3 col-form-label">Update Date</label>
+                            <div class="col-sm-9">
+                                <input asp-for="CategoryDto.UpdatedDate" type="datetime" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <button asp-page-handler="Update" class="btn btn-info mr-2">Update</button>
+                        <button asp-page-handler="Delete" class="btn btn-danger mr-2">Delete</button>
+                        <a asp-page="/Categories/Index" class="btn btn-secondary">Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

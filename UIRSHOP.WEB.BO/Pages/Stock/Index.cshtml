@@ -1,0 +1,51 @@
+﻿@page
+@model UIRSHOP.WEB.BO.Pages.Stock.IndexModel
+@{
+    ViewData["Title"] = "Stock";
+}
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <h2>Stock</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="h4">
+                                    <th><span class="h4">Product</span></th>
+                                    <th><span class="h4">Price (Unit)</span></th>
+                                    <th><span class="h4">Quantity</span></th>
+                                    <th><span class="h4">Creation Date</span></th>
+                                    <th><span class="h4">Update Date </span></th>
+                                    <th class="text-center"><span class="h4">Action</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="h4">HoodieBL</span></td>
+                                    <td><label class="badge badge-success"><span class="h5">99.99</span></label></td>
+                                    <td><span class="h4">23</span></td>
+                                    <td><span class="h4">11/16/2023</span></td>
+                                    <td></td>
+                                    <td class="text-center"><a asp-page="/Stock/Details" class="btn btn-info"><span class="h5">Manage</span></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
